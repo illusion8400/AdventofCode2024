@@ -1,4 +1,4 @@
-with open("day1_input", "r") as input:
+with open("Day1/day1_input", "r") as input:
     input = input.readlines()
 
 column_a = []
