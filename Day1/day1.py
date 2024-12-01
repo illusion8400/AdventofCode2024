@@ -16,7 +16,7 @@ def pop_columns(min_set):
 
 def part_1():
     count = len(column_a)
-    for x in range(0, count):
+    for _ in range(0, count):
         min_set = [min(column_a), min(column_b)]
         if min_set[0] == min_set[1]:
             column_differences.append(0)
