@@ -7,7 +7,7 @@ column_similarities = []
 for line in input:
     column_a.append(line.split()[0])
     column_b.append(line.split()[1])
-count = len(column_a)
+
 for x in column_a:
     count = 0
     for y in column_b:
