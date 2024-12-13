@@ -3,10 +3,10 @@ import re
 with open('Day3/day3_input', 'r') as input:
     input = input.read()
 
-pattern = r"mul\(\d+,\d+\)"
-digits_pattern = r"\d+,+\d+"
-dont_or_do = r"don't\(\)(.*)do\(\)"
-dont_do_it = r"don't(.*)"
+pattern = re.compile(r"mul\(\d+,\d+\)")
+digits_pattern = re.compile(r"\d+,+\d+")
+dont_or_do = r"don't\(\)+(.*)do\(\)+"
+dont_do_it = re.compile(r"don't(.*)")
 
 def part1():
     final_multiplications = []
@@ -24,13 +24,10 @@ def part1():
 
 def part2():
     final_multiplications = []
-    remove_dont = re.search(dont_or_do, input).group()
-    # for dont in remove_dont:
-    new_input = input.replace(remove_dont, "")
-    matches = re.findall(pattern, new_input)
-    dont_at_end = re.match(dont_do_it, new_input)
-    if dont_at_end:
-        new_input.replace(dont_at_end, new_input)
+    remove_dont = re.findall(dont_or_do, input.strip())
+    for dont in remove_dont:
+        new_input = input.replace(dont, "")
+    matches = re.findall(pattern, new_input.strip())
     for match in matches:
         match_tuple = re.findall(digits_pattern, match)
         # for x in match_tuple:
